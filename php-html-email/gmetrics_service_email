@@ -2,28 +2,28 @@
 
 /*******************************************************************************
 
-Author: Heini Holm Andersen
+Author: Gmetrics Application Team
 Version: 2.1.2
 Build: 1011
-First release created on: 20 March 2015
-Latest build created on: 25 September 2017
+First release created on: 20 March 2021
+Latest build created on: 25 September 2021
 Purpose: For sending out responsive and easy to read email alert notifications.
 --------------------------------------------------------------------------------
 Requirements:
 
- 1. Copy the php-html-email folder to the Nagios plugins directory and make sure all files are owned by the nagios user and also that they are executable!
- 2. For the host and services notification alerts, please add these lines to your Nagios commands list:
+ 1. Copy the php-html-email folder to the Gmetrics plugins directory and make sure all files are owned by the gmetrics user and also that they are executable!
+ 2. For the host and services notification alerts, please add these lines to your Gmetrics commands list:
 
     # 'notify-host-by-email-html' command definition
       define command {
         	command_name	notify-host-by-email-html
-      command_line    $USER1$/php-html-email/nagios_host_mail "$NOTIFICATIONTYPE$" "$HOSTNAME$" "$HOSTALIAS$" "$HOSTSTATE$" "$HOSTADDRESS$" "$HOSTOUTPUT$" "$SHORTDATETIME$" "$CONTACTEMAIL$" "$TOTALHOSTSUP$" "$TOTALHOSTSDOWN$" "$NOTIFICATIONAUTHOR$" "$NOTIFICATIONCOMMENT$" "$LONGDATETIME$" "$HOSTDURATION$" "$HOSTDURATIONSEC$" "$LASTHOSTCHECK$" "$LASTHOSTSTATECHANGE$" "$NOTIFICATIONISESCALATED$" "$HOSTATTEMPT$" "$MAXHOSTATTEMPTS$" "$NOTIFICATIONRECIPIENTS$"
+      command_line    $USER1$/php-html-email/gmetrics_host_email "$NOTIFICATIONTYPE$" "$HOSTNAME$" "$HOSTALIAS$" "$HOSTSTATE$" "$HOSTADDRESS$" "$HOSTOUTPUT$" "$SHORTDATETIME$" "$CONTACTEMAIL$" "$TOTALHOSTSUP$" "$TOTALHOSTSDOWN$" "$NOTIFICATIONAUTHOR$" "$NOTIFICATIONCOMMENT$" "$LONGDATETIME$" "$HOSTDURATION$" "$HOSTDURATIONSEC$" "$LASTHOSTCHECK$" "$LASTHOSTSTATECHANGE$" "$NOTIFICATIONISESCALATED$" "$HOSTATTEMPT$" "$MAXHOSTATTEMPTS$" "$NOTIFICATIONRECIPIENTS$"
       }
 
     # 'notify-service-by-email-html' command definition
       define command {
           command_name	notify-service-by-email-html
-      command_line	$USER1$/php-html-email/nagios_service_mail "$NOTIFICATIONTYPE$" "$HOSTNAME$" "$HOSTALIAS$" "$HOSTSTATE$" "$HOSTADDRESS$" "$SERVICEOUTPUT$" "$SHORTDATETIME$" "$SERVICEDESC$" "$SERVICESTATE$" "$CONTACTEMAIL$" "$SERVICEDURATIONSEC$" "$SERVICEEXECUTIONTIME$" "$TOTALSERVICESWARNING$" "$TOTALSERVICESCRITICAL$" "$TOTALSERVICESUNKNOWN$" "$LASTSERVICEOK$" "$LASTSERVICEWARNING$" "$SERVICENOTIFICATIONNUMBER$" "$LONGSERVICEOUTPUT$" "$NOTIFICATIONAUTHOR$" "$NOTIFICATIONCOMMENT$" "$SERVICEDURATION$" "$NOTIFICATIONISESCALATED$" "$SERVICEATTEMPT$" "$MAXSERVICEATTEMPTS$" "$NOTIFICATIONRECIPIENTS$"
+      command_line	$USER1$/php-html-email/gmetrics_service_email "$NOTIFICATIONTYPE$" "$HOSTNAME$" "$HOSTALIAS$" "$HOSTSTATE$" "$HOSTADDRESS$" "$SERVICEOUTPUT$" "$SHORTDATETIME$" "$SERVICEDESC$" "$SERVICESTATE$" "$CONTACTEMAIL$" "$SERVICEDURATIONSEC$" "$SERVICEEXECUTIONTIME$" "$TOTALSERVICESWARNING$" "$TOTALSERVICESCRITICAL$" "$TOTALSERVICESUNKNOWN$" "$LASTSERVICEOK$" "$LASTSERVICEWARNING$" "$SERVICENOTIFICATIONNUMBER$" "$LONGSERVICEOUTPUT$" "$NOTIFICATIONAUTHOR$" "$NOTIFICATIONCOMMENT$" "$SERVICEDURATION$" "$NOTIFICATIONISESCALATED$" "$SERVICEATTEMPT$" "$MAXSERVICEATTEMPTS$" "$NOTIFICATIONRECIPIENTS$"
       }
 
  3. Add the command names to your contact notifications settings, like seen below:
@@ -36,7 +36,7 @@ Requirements:
 
 require_once dirname(__FILE__) . '/PHPMailer/PHPMailerAutoload.php';
 
-/* Arguments containing Nagios Alert/Notification Info */
+/* Arguments containing Gmetrics Alert/Notification Info */
 array_shift($argv);
 $f_notify_type =array_shift($argv);  /*1*/
 $f_host_name =array_shift($argv);    /*2*/
@@ -181,7 +181,7 @@ if($f_notification_escalation_state==1){
   $f_notification_escalation_state_status_none_html = 'Incident Escalated: Yes';
 }
 
-/* Build the Nagios alert/notification, email body/content */
+/* Build the Gmetrics alert/notification, email body/content */
 /* NONE HTML EMAIL CONTENT */
 $message = '
 ***** Gmetrics Application *****
@@ -473,7 +473,7 @@ $HTMLmessage = '
         <tr>
           <td style="font-family: CoconPro-BoldCond, Open Sans, Verdana, sans-serif; vertical-align:middle; color: #999999; text-align: center; padding: 40px 10px;width: 100%;" class="x-gmail-data-detectors">
             <span style="font-family: CoconPro-BoldCond, Open Sans, Verdana, sans-serif; color:#999999; text-align:center;">
-              Copyright &#169; 2014-' .$f_date_year. ' &#124; <a href="mailto:hhan@mail.fo?subject=Nagios-HTML-Email-Notifications" style="font-family: CoconPro-BoldCond, Open Sans, Verdana, sans-serif; text-decoration:underline; color:#000000;">Heini Holm Andersen</a>
+              Copyright &#169; 2014-' .$f_date_year. ' &#124; <a href="mailto:support@groots.in?subject=Gmetrics-HTML-Email-Notifications" style="font-family: CoconPro-BoldCond, Open Sans, Verdana, sans-serif; text-decoration:underline; color:#000000;">Gmetrics Application Team</a>
             </span>
             <br>
             <span style="font-family: CoconPro-BoldCond, Open Sans, Verdana, sans-serif; color:#999999; text-align:center;">
