@@ -164,7 +164,7 @@ if($f_notification_escalation_state==1){
 /* Build the Nagios alert/notification, email body/content */
 /* NONE HTML EMAIL CONTENT */
 $message = '
-***** Nagios *****
+***** Gmetrics Application *****
 
 Notification Type: ' .$f_notify_type. '
 Hostname: ' .$f_host_name. '
@@ -479,8 +479,8 @@ $mail->isSMTP(); // Set mailer to use SMTP
 $mail->Host = 'localhost';	// Specify main and backup SMTP servers
 $mail->SMTPAuth = false; // Enable SMTP authentication
 
-$mail->From = 'nagios@localhost.com';
-$mail->FromName = 'Nagios';
+$mail->From = 'harish@groots.in';
+$mail->FromName = 'Gmetrics App';
 $mail->addAddress($f_to); // Add a recipient + Name is optional "$mail->addAddress('joe@example.net', 'Joe User');"
 $mail->isHTML(true); // Set email format to HTML
 $mail->WordWrap = 50; // Set word wrap to 50 characters
