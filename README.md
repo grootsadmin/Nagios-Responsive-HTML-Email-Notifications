@@ -7,7 +7,9 @@ Copyright (&#169;) 2021 Groots Software <support@groots.in>
 
 ## Screenshots
 ### Host Alert Notification
-![nagios_host_mail screenshot](https://github.com/heiniha/Nagios-Responsive-HTML-Email-Notifications/blob/GitHub/image-examples/host_html_email.png?raw=true)
+![nagios_host_mail screenshot](https://github.com/grootsadmin/gmetrics_email_template/blob/GitHub/image-examples/host_html_email.png?raw=true)
+(https://github.com/heiniha/Nagios-Responsive-HTML-Email-Notifications/blob/GitHub/image-examples/host_html_email.png?raw=true)
+
 ### Service Alert Notification
 ![nagios_service_mail screenshot](https://github.com/heiniha/Nagios-Responsive-HTML-Email-Notifications/blob/GitHub/image-examples/service_html_email.png?raw=true)
 
